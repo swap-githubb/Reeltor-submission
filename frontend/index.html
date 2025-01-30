@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Role Selection Screen -->
+        <div id="roleSelection">
+            <h1>Welcome to User Management System</h1>
+            <button onclick="showPanel('user')">User Login</button>
+            <button onclick="showPanel('admin')">Admin Login</button>
+        </div>
+
+        <!-- User Panel -->
+        <div id="userPanel" class="hidden">
+            
+            <!-- Authentication Forms -->
+            <div id="userAuth">
+                <div id="userLogin">
+                    <h2>User Login</h2>
+                    <input type="email" id="loginEmail" placeholder="Email">
+                    <input type="password" id="loginPassword" placeholder="Password">
+                    <button onclick="userLogin()">Login</button>
+                    <p>Don't have an account? <a href="#" onclick="toggleAuthForms()">Sign Up</a></p>
+                </div>
+
+                <div id="userSignup" class="hidden">
+                    <h2>User Sign Up</h2>
+                    <input type="email" id="signupEmail" placeholder="Email">
+                    <input type="password" id="signupPassword" placeholder="Password">
+                    <button onclick="userSignup()">Create Account</button>
+                    <p>Already have an account? <a href="#" onclick="toggleAuthForms()">Login</a></p>
+                </div>
+            </div>
+              
+            
+                
+            <!-- User Profile Management -->
+            <div id="userProfile" class="hidden">
+                <div>
+                    <button id="userlogout" onclick="logout()" class="logout-btn">Logout</button>
+                </div>
+                <h2>Profile Management</h2>
+                <input type="text" id="profileName" placeholder="Name">
+                <input type="number" id="profileMobile" placeholder="Mobile Number">
+                <textarea id="profileBio" placeholder="Bio"></textarea>
+                <div class="availability">
+                    <label>Available From: <input type="time" id="availableFrom"></label>
+                    <label>Available To: <input type="time" id="availableTo"></label>
+                </div>
+                <button onclick="updateProfile()">Update Profile</button>
+            </div>
+
+            <!-- User Notification Section -->
+            <div id="userNotifications" class="hidden">
+                <h2>Send Notification</h2>
+                <textarea id="notificationMessage" placeholder="Enter your message"></textarea>
+                <input type="text" id="recipients" placeholder="Enter recipient emails (comma-separated)">
+                <button onclick="sendUserNotification()">Send Notification</button>
+                
+                <h3>Received Notifications</h3>
+                <div id="notificationList"></div>
+            </div>
+        </div>
+
+        <!-- Admin Panel -->
+        <div id="adminPanel" class="hidden">
+           
+            <div id="adminLogin">
+                <h2>Admin Login</h2>
+                <input type="password" id="adminPassword" placeholder="Admin Password">
+                <button onclick="adminLogin()">Login</button>
+            </div>
+            <div id="adminInterface" class="hidden">
+                <div>
+                    <button id="adminlogout" onclick="logout()" class="logout-btn">Logout</button>
+                </div>
+                <h2>Admin Notification Management</h2>
+                <textarea id="adminNotification" placeholder="Enter notification message"></textarea>
+                <input type="text" id="adminRecipients" placeholder="Recipient emails (comma-separated)">
+                <div class="critical-check">
+                    <label><input type="checkbox" id="criticalNotification"> Critical Notification</label>
+                </div>
+                <button onclick="sendAdminNotification()">Send Notification</button>
+            </div>
+        </div>
+
+        <div id="message" class="hidden"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
