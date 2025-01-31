@@ -1,4 +1,4 @@
-const API_BASE = 'http://localhost:5000/api';
+const API_BASE = 'https://user-management-and-notification.onrender.com/api';
 
 authToken = null;
 currentUser = null;
