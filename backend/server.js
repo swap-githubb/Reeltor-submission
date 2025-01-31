@@ -9,8 +9,23 @@ const cors = require('cors');
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+
+const allowedOrigins = [
+  'https://your-frontend-domain.com', // Render frontend URL
+  'http://localhost:3000' // Local development
+];
+
+app.use(cors({
+  origin: allowedOrigins,
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
+}));
+
+
 app.use(bodyParser.json()); // Parse incoming JSON requests
+
+
+
 
 
 app.use(express.static(path.join(__dirname, '../frontend')));
